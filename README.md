@@ -3,8 +3,8 @@
 A soon-to-be-released web app that showcases hot stocks of the hour/trading day/week/month. 
 The perfect tool for retail traders - an all inclusive gizmo displaying real time analytics, news, stock quotes, trading advice.
 
-![](showcase.png)
-
+![](showcase-images/showcase.png)
+    
 ## Features:
 - Long, swing, short term stock analytics
 - Displays hot stocks
