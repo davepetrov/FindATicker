@@ -6,7 +6,7 @@ The perfect tool for retail traders - an all inclusive app displaying real time 
 ![](showcase-images/showcase.png)
     
 ## Features:
-- Long, swing, short term stock analytics
+- Long, swing, short term stock analytics based off trending Social media activity
 - Displays hot stocks with focus on day/retail trader demographic
 - Real time stock market news
 - Real time Stock Quotes
