@@ -1,4 +1,9 @@
-# [In Development] TickerSocial
+<p align="center">
+  <img src="/showcase-images/logo.png">
+</p>
+<p align="center">
+    <strong>[In Development]</strong>
+</p>
 
 A soon-to-be-released web app that showcases hot stocks of the hour/trading day/week/month. 
 The perfect tool for retail traders - an all inclusive app displaying real time analytics, social-media trends, news, stock quotes, and trading advice.
