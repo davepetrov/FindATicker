@@ -61,10 +61,11 @@ public class StockTwitsService {
             String tickerId = ticker.getSymbol();
 
             //Disable actually opening the browser + set path to chrome driver
-            ChromeOptions options = new ChromeOptions();
-            options.setHeadless(true);
+//            ChromeOptions options = new ChromeOptions();
+//            options.setHeadless(true);
 
             WebDriverManager.getInstance(CHROME).setup();
+            System.setProperty("webdriver.chrome.driver", "./lib/chromedriver");
             ChromeDriver driver = new ChromeDriver();
 
             //Open browser, search

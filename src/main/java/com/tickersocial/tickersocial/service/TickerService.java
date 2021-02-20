@@ -42,6 +42,7 @@ public class TickerService{
                 return new ResponseEntity<HotTickersComponent>(HttpStatus.BAD_REQUEST);
             }
 
+
             return new ResponseEntity<HotTickersComponent>(this.hotTickers, HttpStatus.OK);
         }
         catch(UnirestException e){
