@@ -6,13 +6,25 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.tickersocial.tickersocial.Model.HotTickersComponent;
 import com.tickersocial.tickersocial.Model.Ticker;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.NoArgsConstructor;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+
+import static io.github.bonigarcia.wdm.config.DriverManagerType.CHROME;
 
 @NoArgsConstructor
 public class StockTwitsService {
@@ -45,6 +57,30 @@ public class StockTwitsService {
     }
 
     private void populateTickerInfo(){
-        //TODO: Find a way to get mention volume given the ticker name
+        for (Ticker ticker: this.hotTickers.getTickers()){
+            String tickerId = ticker.getSymbol();
+
+            //Disable actually opening the browser + set path to chrome driver
+//            ChromeOptions options = new ChromeOptions();
+//            options.setHeadless(true);
+
+            WebDriverManager.getInstance(CHROME).setup();
+            System.setProperty("webdriver.chrome.driver", "./lib/chromedriver");
+            ChromeDriver driver = new ChromeDriver();
+
+            //Open browser, search
+            WebDriverWait wait = new WebDriverWait(driver, 30);
+            driver.navigate().to("https://stocktwits.com/symbol/"+tickerId);
+
+//            LocalDate currentDateTime = LocalDate.now();
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YY"); // dd/mm/yy
+//            String currentDateFormatt/**/
+
+            List<WebElement> postList = driver.findElements(
+                    By.xpath("//*[@id=\"app\"]/div/div/div[3]/div/div/div[1]/div[2]/div/div/div[2]/div[3]/div"));
+            ticker.getActivity().addStockTwitzMentions(postList.size());
+
+            driver.quit();
+        }
     }
 }
