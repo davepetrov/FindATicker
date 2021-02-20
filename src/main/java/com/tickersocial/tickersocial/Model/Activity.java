@@ -28,6 +28,15 @@ public class Activity {
         this.twitterHashtags = twitterHashtags;
     }
 
+    public void incrementStockTwitzMentions(){
+        this.twitterHashtags+=1;
+    }
+
+    public void addStockTwitzMentions(int c){
+        this.twitterHashtags+=c;
+    }
+
+
 
 
 
