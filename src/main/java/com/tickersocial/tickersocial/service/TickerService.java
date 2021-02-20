@@ -12,6 +12,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import com.tickersocial.tickersocial.Model.Activity;
 import com.tickersocial.tickersocial.Model.HotTickersComponent;
 import com.tickersocial.tickersocial.Model.Ticker;
+import com.tickersocial.tickersocial.Model.TickerNews;
 import com.tickersocial.tickersocial.service.SocialServices.StockTwitsService;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -50,15 +51,20 @@ public class TickerService{
         }
     }
 
-    // TODO!
-    public ResponseEntity<Ticker> getTickerInfo(String interval){
+    // TODO
+    public ResponseEntity<Ticker> getTickerInfo(String symbol, String interval){
         return new ResponseEntity<Ticker>(HttpStatus.FORBIDDEN);
+    }
+
+    // TODO
+    public ResponseEntity<List<TickerNews>>getTickerNews(String symbol){
+        return new ResponseEntity<List<TickerNews>>(HttpStatus.FORBIDDEN);
     }
     private Boolean isValidInterval(String interval){
         if (interval == null){
             return true;
         }
-        List<String> validIntervals = new ArrayList<>(Arrays.asList("h", "d", "w", "m"));
+        List<String> validIntervals = new ArrayList<>(Arrays.asList("30m", "h", "d"));
         return validIntervals.contains(interval);
     }
 }
