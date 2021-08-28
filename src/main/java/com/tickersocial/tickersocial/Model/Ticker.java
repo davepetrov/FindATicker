@@ -5,27 +5,35 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @AllArgsConstructor()
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Ticker {
-    private String Symbol; // UID
+    private String symbol; // UID
     private String title;
     private String currentPrice;
     private String currentVolume;
     private Activity activity;
 
+    public Ticker(String symbol, String title){
+        this.symbol = symbol;
+        this.title = title=title;
+        this.activity=new Activity();
+
+    }
+    public Ticker(){
+        this.activity=new Activity();
+    }
 
     public String getSymbol() {
-        return Symbol;
+        return this.symbol;
     }
 
     public void setSymbol(String symbol) {
-        Symbol = symbol;
+        this.symbol = symbol;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setTitle(String title) {
@@ -33,7 +41,7 @@ public class Ticker {
     }
 
     public String getCurrentPrice() {
-        return currentPrice;
+        return this.currentPrice;
     }
 
     public void setCurrentPrice(String currentPrice) {
@@ -41,7 +49,7 @@ public class Ticker {
     }
 
     public String getCurrentVolume() {
-        return currentVolume;
+        return this.currentVolume;
     }
 
     public void setCurrentVolume(String currentVolume) {
@@ -49,7 +57,7 @@ public class Ticker {
     }
 
     public Activity getActivity() {
-        return activity;
+        return this.activity;
     }
 
     public void setActivity(Activity activity) {
